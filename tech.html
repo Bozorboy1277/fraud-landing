@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texnik yechim — FraudShield AI</title>
+
+    <style>
+        body{
+            margin:0;
+            background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
+            color:#e5e7eb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        a{text-decoration:none;color:inherit;}
+
+        /* NAVBAR */
+        .navbar{
+            background:rgba(15,23,42,0.96);
+            position:sticky;
+            top:0;
+            z-index:10;
+            border-bottom:1px solid #1f2937;
+            backdrop-filter:blur(10px);
+        }
+        .nav-inner{
+            max-width:1080px;
+            margin:0 auto;
+            padding:12px 18px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .brand{
+            font-size:18px;
+            font-weight:800;
+            color:#60a5fa;
+            letter-spacing:0.05em;
+        }
+        .brand span{ color:#f97316;}
+        .nav-links{
+            display:flex;
+            gap:12px;
+            font-size:14px;
+        }
+        .nav-links a{
+            padding:6px 12px;
+            border-radius:999px;
+            color:#9ca3af;
+        }
+        .nav-links a:hover{
+            background:rgba(37,99,235,0.12);
+            color:#fff;
+        }
+        .nav-links a.active{
+            background:linear-gradient(135deg,#1d4ed8,#22c55e);
+            color:#fff;
+            font-weight:600;
+        }
+
+        header{
+            max-width:1080px;
+            margin:32px auto 0;
+            padding:0 18px;
+        }
+        header h1{
+            margin:0;
+            font-size:30px;
+            font-weight:800;
+            color:#e5e7eb;
+        }
+        header p{
+            margin-top:8px;
+            font-size:14px;
+            color:#9ca3af;
+        }
+
+        main{
+            max-width:1080px;
+            margin:24px auto 60px;
+            padding:0 18px;
+        }
+
+        .card{
+            background:#020617;
+            border-radius:14px;
+            border:1px solid #1e293b;
+            padding:22px 20px 26px 20px;
+            margin-bottom:22px;
+            box-shadow:0 24px 60px rgba(0,0,0,0.55);
+        }
+        .card h2{
+            margin-top:0;
+            font-size:22px;
+            color:#f9fafb;
+        }
+        .card p{
+            font-size:15px;
+            color:#cbd5e1;
+        }
+
+        /* ARCH DIAGRAM */
+        .arch-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:18px;
+            margin-top:14px;
+        }
+        .arch-box{
+            border-radius:12px;
+            padding:16px 14px;
+            background:rgba(15,23,42,0.96);
+            border:1px solid #1e293b;
+            font-size:14px;
+        }
+        .arch-title{
+            font-size:15px;
+            font-weight:600;
+            color:#bfdbfe;
+            margin-bottom:6px;
+        }
+
+        /* STEPS */
+        .steps{
+            counter-reset: step;
+            margin-top:10px;
+        }
+        .step{
+            position:relative;
+            padding-left:32px;
+            margin-bottom:14px;
+        }
+        .step::before{
+            counter-increment: step;
+            content: counter(step);
+            position:absolute;
+            left:0;
+            top:4px;
+            width:22px;
+            height:22px;
+            border-radius:999px;
+            background:linear-gradient(135deg,#22c55e,#0ea5e9);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:12px;
+            font-weight:700;
+            color:#020617;
+            box-shadow:0 0 10px rgba(34,197,94,0.9);
+        }
+        .step-title{
+            font-size:15px;
+            font-weight:600;
+            color:#e5e7eb;
+        }
+        .step-desc{
+            font-size:14px;
+            color:#9ca3af;
+            margin-top:2px;
+        }
+
+        /* LISTS */
+        ul{
+            margin-top:6px;
+            padding-left:18px;
+        }
+        li{
+            margin-bottom:4px;
+            font-size:14px;
+            color:#cbd5e1;
+        }
+
+        .tech-pill{
+            display:inline-block;
+            font-size:12px;
+            padding:3px 8px;
+            border-radius:999px;
+            border:1px solid #1f2937;
+            background:rgba(15,23,42,0.9);
+            color:#9ca3af;
+            margin:2px 4px 2px 0;
+        }
+
+        footer{
+            text-align:center;
+            padding:16px;
+            font-size:13px;
+            color:#6b7280;
+            border-top:1px solid #020617;
+            background:#020617;
+            margin-top:40px;
+        }
+
+        @media (max-width:700px){
+            header h1{ font-size:24px; }
+            .nav-inner{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <div class="brand">FRAUD<span>SHIELD</span> AI</div>
+        <div class="nav-links">
+            <a href="index.html">Muammo & yechim</a>
+            <a href="team.html">Jamoa</a>
+            <a href="why-us.html">Nega biz?</a>
+            <a href="roadmap.html">Yo‘l xaritasi</a>
+            <a href="tech.html" class="active">Texnik yechim</a>
+            <a href="demo.html">Demo / API</a>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1>Texnik yechim va AI arxitektura</h1>
+    <p>
+        Biz muammoni qanday texnik yondashuv va AI texnologiyalar orqali hal qilamiz?
+    </p>
+</header>
+
+<main>
+
+    <!-- 1. ARXITEKTURA UMUMIY KO‘RINISHI -->
+    <section class="card">
+        <h2>1. Umumiy arxitektura</h2>
+        <p>
+            Tizim <b>modulli arxitektura</b> asosida qurilgan bo‘lib, uchta asosiy qatlamdan iborat:
+            ma’lumot manbalari, AI modeli (backend API) va bank ilovalari bilan integratsiya qatlami.
+        </p>
+
+        <div class="arch-grid">
+            <div class="arch-box">
+                <div class="arch-title">1) Ma’lumot manbalari</div>
+                <ul>
+                    <li>Bank tranzaksiyalari tarixiy loglari</li>
+                    <li>Kartalar bo‘yicha operatsiya ma’lumotlari</li>
+                    <li>Tranzaksiya turi, miqdori, balans o‘zgarishlari</li>
+                    <li>(Keyinchalik) qurilma / lokatsiya / vaqt zonasi</li>
+                </ul>
+            </div>
+
+            <div class="arch-box">
+                <div class="arch-title">2) AI modeli va API (yadro qism)</div>
+                <ul>
+                    <li>RandomForestClassifier asosidagi fraud detection modeli</li>
+                    <li>Python + Scikit-Learn yordamida o‘qitilgan</li>
+                    <li>Flask backend orqali /predict endpoint ko‘rinishida xizmat qiladi</li>
+                    <li>Har bir so‘rov uchun fraud ehtimolini (0–1) qaytaradi</li>
+                </ul>
+            </div>
+
+            <div class="arch-box">
+                <div class="arch-title">3) Integratsiya va biznes qoidalar</div>
+                <ul>
+                    <li>Bankning core banking / payment gateway tizimi</li>
+                    <li>API orqali tranzaksiyani baholash va natijaga qarab qaror qabul qilish</li>
+                    <li>Karta bloklash, qo‘shimcha verifikatsiya talab qilish</li>
+                    <li>Monitoring paneli va xodimlar uchun dashboard</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ML MODELI QANDAY ISHLAYDI -->
+    <section class="card">
+        <h2>2. Machine Learning modeli qanday ishlaydi?</h2>
+        <p>
+            Biz <b>Random Forest</b> algoritmidan foydalandik — u bir nechta qaror daraxtlarining
+            ansambli bo‘lib, tranzaksiyaning fraud bo‘lish ehtimolini hisoblaydi.
+        </p>
+
+        <ul>
+            <li><b>Input featurelar:</b> tranzaksiya turi (PAYMENT, CASH_OUT, TRANSFER...), miqdor, vaqt, 
+                jo‘natuvchi va qabul qiluvchining eski/yangi balanslari, balans o‘zgarishlari va hokazo.</li>
+            <li><b>Target (label):</b> 0 — normal tranzaksiya, 1 — fraud tranzaksiya.</li>
+            <li><b>Model chiqishi:</b> fraud ehtimoli (masalan, 0.73 = 73% xavf).</li>
+        </ul>
+
+        <p>
+            Biz <b>threshold</b> yondashuvdan foydalanamiz. Masalan:
+        </p>
+        <ul>
+            <li>Fraud ehtimoli &lt; 0.15 → "past xavf", tranzaksiya davom etishi mumkin</li>
+            <li>0.15 ≤ ehtimol &lt; 0.5 → "ogohlantirish", qo‘shimcha monitoring yoki soft-check</li>
+            <li>ehtimol ≥ 0.5 → "yuqori xavf", tranzaksiya to‘xtatiladi va multi-step verifikatsiya ishga tushadi</li>
+        </ul>
+
+        <p>
+            Modelni o‘qitish jarayonida biz quyidagilarga e’tibor qaratdik:
+        </p>
+        <ul>
+            <li>Class imbalance — fraud tranzaksiyalar odatda juda oz bo‘ladi:</li>
+            <li>Shuning uchun:</li>
+            <ul>
+                <li>balanslashtirish texnikalari (undersampling/oversampling)</li>
+                <li>f1-score, recall (fraudni o‘tkazib yubormaslik) kabi metrikalarni tahlil qilish</li>
+            </ul>
+        </ul>
+    </section>
+
+    <!-- 3. TRANZAKSIYA OQIMI: QANDAY ISHLAYDI -->
+    <section class="card">
+        <h2>3. Tranzaksiya oqimi (real vaqtda qanday ishlaydi?)</h2>
+        <p>
+            Quyida tizimning sodda, ammo real ishlash jarayoni bosqichma-bosqich ko‘rsatilgan:
+        </p>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-title">Foydalanuvchi tranzaksiya boshlaydi</div>
+                <div class="step-desc">
+                    Mobil ilova yoki internet-banking orqali karta/karta, karta/hisob o‘rtasida to‘lov yoki pul yechish operatsiyasi boshlanadi.
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">Bank tizimi bizning /predict API ga so‘rov jo‘natadi</div>
+                <div class="step-desc">
+                    Tranzaksiya ma’lumotlari (type, amount, oldbalanceOrg, newbalanceOrig va hokazo) JSON ko‘rinishida FraudShield AI serveriga yuboriladi.
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">AI modeli tranzaksiyani baholaydi</div>
+                <div class="step-desc">
+                    RandomForest modeli featurelarni qayta ishlaydi, ehtimollik hisoblaydi va javob qaytaradi:
+                    <b>fraud_probability</b> va <b>prediction</b> (0 yoki 1).
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">Biznes qoidalar ishlaydi</div>
+                <div class="step-desc">
+                    Threshold va qo‘shimcha qoidalar asosida tranzaksiya:
+                    <ul>
+                        <li>odatdagi holatda → davom etadi;</li>
+                        <li>shubhali bo‘lsa → vaqtincha bloklanadi yoki kechiktiriladi;</li>
+                        <li>yuqori xavf bo‘lsa → karta bloklanadi va multi-step tasdiqlash ishga tushadi.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">Multi-step verifikatsiya</div>
+                <div class="step-desc">
+                    Yuqori xavf aniqlanganda tizim quyidagilarni talab qilishi mumkin:
+                    <ul>
+                        <li>SMS-kod orqali tasdiqlash</li>
+                        <li>Yuzni aniqlash (face recognition) orqali tekshirish (keyingi bosqich reja)</li>
+                        <li>Mijozga avtomatik call-center qo‘ng‘irog‘i yoki chatbot orqali tasdiqlash</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. TEXNOLOGIK STACK -->
+    <section class="card">
+        <h2>4. Texnologik stack</h2>
+        <p>
+            Loyihani ishlab chiqishda quyidagi texnologiyalardan foydalanildi:
+        </p>
+
+        <div style="margin-bottom:6px;">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Flask</span>
+            <span class="tech-pill">Scikit-Learn</span>
+            <span class="tech-pill">Pandas</span>
+            <span class="tech-pill">NumPy</span>
+        </div>
+        <div style="margin-bottom:6px;">
+            <span class="tech-pill">HTML5</span>
+            <span class="tech-pill">CSS3</span>
+            <span class="tech-pill">REST API</span>
+        </div>
+        <div>
+            <span class="tech-pill">Render (hosting)</span>
+            <span class="tech-pill">GitHub</span>
+            <span class="tech-pill">Joblib (model serialization)</span>
+        </div>
+
+        <p style="margin-top:10px;">
+            Backend minimal, lekin kengaytiriladigan tarzda yozilgan: modelni almashtirish, 
+            yangi feature qo‘shish yoki qo‘shimcha endpointlar yaratish oson. 
+        </p>
+    </section>
+
+    <!-- 5. AI DANDAN FOYDALANISH STRATEGIYASI -->
+    <section class="card">
+        <h2>5. AI dan foydalanish strategiyasi</h2>
+        <p>
+            Biz AI’ni bir martalik “model o‘qitish” emas, balki <b>doimiy yaxshilanib boruvchi tizim</b> sifatida ko‘ramiz:
+        </p>
+
+        <ul>
+            <li>Yangi tranzaksiya ma’lumotlari to‘planishi bilan modelni davriy qayta o‘qitish</li>
+            <li>Bankning o‘ziga xos fraud ssenariylariga mos labellash va feature engineering</li>
+            <li>Turli mijoz segmentlari (yoshi, xarid odatlari, hudud) bo‘yicha mos thresholdlar</li>
+            <li>Explainability (qaysi feature qarorga ko‘proq ta’sir qilganini ko‘rsatish) ustida ishlash</li>
+        </ul>
+
+        <p>
+            Shunday yondashuv orqali tizim vaqt o‘tishi bilan yanada aqlli, sezgir va real sharoitlarga moslashgan 
+            <b>fraud monitoring platformasi</b>ga aylanishi mumkin.
+        </p>
+    </section>
+
+</main>
+
+
+
+</body>
+</html>

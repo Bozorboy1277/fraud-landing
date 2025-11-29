@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muammo va yechim — Fraud Detection AI</title>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        body{
+            margin:0;
+            padding:0;
+            background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+            color:#e5e7eb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height:1.6;
+        }
+        a{text-decoration:none;color:inherit;}
+
+        /* Navbar */
+        .navbar{
+            position:sticky;
+            top:0;
+            z-index:10;
+            background:rgba(15,23,42,0.95);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid #1f2937;
+        }
+        .nav-inner{
+            max-width:1080px;
+            margin:0 auto;
+            padding:12px 18px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+        .brand{
+            font-weight:700;
+            letter-spacing:0.04em;
+            font-size:16px;
+            color:#60a5fa;
+        }
+        .brand span{
+            color:#f97316;
+        }
+        .nav-links{
+            display:flex;
+            gap:14px;
+            font-size:14px;
+        }
+        .nav-links a{
+            padding:6px 12px;
+            border-radius:999px;
+            border:1px solid transparent;
+            color:#9ca3af;
+        }
+        .nav-links a:hover{
+            border-color:#1d4ed8;
+            color:#e5e7eb;
+            background:rgba(37,99,235,0.08);
+        }
+        .nav-links a.active{
+            background:linear-gradient(135deg,#1d4ed8,#22c55e);
+            color:#f9fafb;
+            border-color:transparent;
+            font-weight:600;
+        }
+
+        /* Header */
+        header{
+            max-width:1080px;
+            margin:28px auto 0 auto;
+            padding:10px 18px 0 18px;
+        }
+        header h1{
+            margin:0;
+            font-size:30px;
+            color:#f9fafb;
+        }
+        header p{
+            margin:6px 0 0 0;
+            color:#9ca3af;
+            font-size:14px;
+        }
+        .tagline{
+            margin-top:8px;
+            font-size:13px;
+            color:#6b7280;
+        }
+
+        /* Main content */
+        main{
+            max-width:1080px;
+            margin:18px auto 40px auto;
+            padding:0 18px 40px 18px;
+        }
+        .card{
+            background:rgba(15,23,42,0.98);
+            border-radius:14px;
+            padding:22px 20px 26px 20px;
+            border:1px solid #1f2937;
+            box-shadow:0 24px 60px rgba(0,0,0,0.55);
+        }
+        h2{
+            margin-top:0;
+            font-size:24px;
+            color:#60a5fa;
+        }
+        h3{
+            margin-bottom:6px;
+            margin-top:20px;
+            font-size:18px;
+            color:#93c5fd;
+        }
+        p{
+            font-size:15px;
+            margin:8px 0;
+        }
+        ul{
+            margin:8px 0 8px 20px;
+            padding:0;
+            font-size:14px;
+        }
+        li{
+            margin-bottom:4px;
+        }
+        b{
+            color:#f9fafb;
+        }
+        .chip{
+            display:inline-block;
+            font-size:12px;
+            padding:3px 10px;
+            border-radius:999px;
+            border:1px solid #1f2937;
+            background:rgba(15,23,42,0.9);
+            color:#9ca3af;
+            margin-right:6px;
+            margin-top:4px;
+        }
+
+        footer{
+            text-align:center;
+            padding:16px;
+            font-size:12px;
+            color:#6b7280;
+            border-top:1px solid #020617;
+            background:#020617;
+        }
+
+        @media (max-width:700px){
+            .nav-inner{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:8px;
+            }
+            header h1{
+                font-size:24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <div class="brand">
+            FRAUD<span>SHIELD</span> AI
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Muammo & yechim</a>
+            <a href="team.html">Jamoa</a>
+            <a href="why-us.html">Nega aynan biz?</a>
+            <a href="roadmap.html">Yo‘l xaritasi</a>
+            <a href="tech.html">Texnik yechim</a>
+            <a href="demo.html">Demo / API</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HEADER -->
+<header>
+    <h1>Bank fraud tranzaksiyalarini erta aniqlash</h1>
+    <p>Soha: FinTech & Axborot xavfsizligi &nbsp; | &nbsp; Yo‘nalish: Moliyaviy firibgarlikni kamaytirish</p>
+    <div class="tagline">
+        1-bo‘lim — muammo va biz taklif qilayotgan IT-yechimni aniq ifodalash.
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+    <div class="card" id="index-solution">
+        <h2>1. Muammo va yechim</h2>
+
+        <h3>Muammo</h3>
+        <p>
+            O‘zbekistonda raqamli to‘lovlar, mobil banking va onlayn kartadan foydalanish hajmi
+            yildan-yilga keskin oshmoqda. Har kuni millionlab tranzaksiyalar amalga oshiriladi va
+            <b>firibgarlik operatsiyalarini qo‘lda yoki faqat oddiy qoidalar yordamida nazorat qilish
+            amalda imkonsiz</b> bo‘lib bormoqda.
+        </p>
+
+        <p>Firibgarlar odatda quyidagi sxemalardan foydalanadilar:</p>
+        <ul>
+            <li>kartadan juda katta miqdorda pul yechish yoki boshqa hisob raqamga o‘tkazish;</li>
+            <li>1–2 daqiqa ichida ketma-ket kichik summalarda ko‘p tranzaksiya qilish (bo‘lib-bo‘lib yechish);</li>
+            <li>mijoz telefoniga kelgan SMS-kod yoki tasdiqlash ma’lumotlarini aldov yo‘li bilan olish;</li>
+            <li>tungi vaqtda, noodatiy hudud yoki noodatiy qurilmadan operatsiya bajarish.</li>
+        </ul>
+
+        <p>
+            Natijada:
+        </p>
+        <ul>
+            <li>mijozlar o‘z mablag‘idan ayriladi;</li>
+            <li>banklar uchun moliyaviy yo‘qotishlar oshadi;</li>
+            <li>mijoz ishonchi pasayadi va reputatsion xatarlar kuchayadi.</li>
+        </ul>
+
+        <p>
+            Hozirgi amaliyotda ko‘plab banklarda fraud monitoring:
+        </p>
+        <ul>
+            <li>kechikkan (tranzaksiya tugagandan keyin ko‘rib chiqiladi);</li>
+            <li>qo‘lda tekshirish va operator tajribasiga qattiq bog‘langan;</li>
+            <li>faqat statik qoidalar (limitga qarab bloklash va hokazo) bilan chegaralangan.</li>
+        </ul>
+
+        <p>
+            Bu yondashuv <b>yangi, murakkab firibgarlik ssenariylarini</b> aniqlashga har doim ham
+            yetarli emas va real vaqt rejimida qaror qabul qilishni ta’minlamaydi.
+        </p>
+
+        <div style="margin:10px 0 4px 0;font-size:13px;color:#9ca3af;">
+            Biz ko‘zlagan asosiy maqsad:
+        </div>
+        <div class="chip">Firibgarlikni tranzaksiya paytida aniqlash</div>
+        <div class="chip">Mijoz mablag‘ini himoya qilish</div>
+        <div class="chip">Bank risklarini kamaytirish</div>
+
+        <h3>Yechim</h3>
+        <p>
+            Ushbu muammoni hal qilish uchun biz <b>AI asosidagi “Fraud Detection System”</b> ni taklif qilamiz.
+            Tizim bank tranzaksiyalarini <b>real vaqt rejimida</b> tahlil qiladi va har bir operatsiya uchun
+            firibgarlik ehtimolini hisoblaydi. Model tarixiy ma’lumotlar asosida o‘qitilgan bo‘lib,
+            odatiy xarajat odatlarini o‘rganadi va shubhali xatti-harakatlarni avtomatik flag qiladi.
+        </p>
+
+        <p>Tizimning asosiy funksiyalari:</p>
+        <ul>
+            <li>
+                <b>Machine Learning modeli (Random Forest)</b> tranzaksiyaning turli xususiyatlari
+                (miqdor, vaqt, balansdagi o‘zgarishlar va hokazo) asosida xavf darajasini
+                (fraud ehtimolini) baholaydi.
+            </li>
+            <li>
+                <b>Katta miqdordagi yoki noodatiy tranzaksiyalarni avtomatik aniqlash</b> —
+                foydalanuvchining odatiy harajatidan keskin farq qiladigan operatsiyalar flag qilinadi.
+            </li>
+            <li>
+                <b>Qisqa vaqt ichida ketma-ket ko‘p tranzaksiyalarni kuzatish</b> —
+                bo‘lib-bo‘lib yechish va “anti-fraudni aylanib o‘tish” sxemalarini ushlash.
+            </li>
+            <li>
+                Shubhali operatsiya aniqlanganda kartani vaqtinchalik bloklash va
+                <b>ko‘p bosqichli verifikatsiya</b>ni ishga tushirish:
+                SMS-kod, yuzni tekshirish, mijozga qo‘ng‘iroq yoki qo‘shimcha tasdiqlash savollari.
+            </li>
+        </ul>
+
+        <p>
+            Natijada tizim:
+        </p>
+        <ul>
+            <li><b>firibgarlik tranzaksiyalarini erta bosqichda to‘xtatadi</b>;</li>
+            <li>mijoz mablag‘ini real vaqtda himoya qiladi;</li>
+            <li>bankning moliyaviy va reputatsion risklarini kamaytiradi;</li>
+            <li>fraud bo‘yicha qo‘lda tekshiruvlar sonini kamaytirib, xodimlar vaqtini tejaydi.</li>
+        </ul>
+
+        <p>
+            Biz taklif qilayotgan yechim — bu nafaqat nazariy g‘oya, balki
+            <b>amaliy, ishlayotgan AI modeli va real API bilan integratsiya qilinadigan tizim</b>.
+            Keyingi sahifalarda jamoa, texnik yechim, yo‘l xaritasi va demo haqida batafsil ma’lumot beramiz.
+        </p>
+    </div>
+</main>
+
+</body>
+</html>

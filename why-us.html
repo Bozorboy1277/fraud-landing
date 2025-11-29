@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nega aynan biz? — FraudShield AI</title>
+
+    <style>
+        body{
+            margin:0;
+            background: radial-gradient(circle at top, #0a0f1e, #000 75%);
+            color:#e5e7eb; font-family:sans-serif;
+        }
+
+        /* NAVBAR */
+        .navbar{
+            background:rgba(15,23,42,0.95);
+            border-bottom:1px solid #1f2937;
+            backdrop-filter:blur(8px);
+            position:sticky; top:0; z-index:10;
+        }
+        .nav-inner{
+            max-width:1080px; margin:0 auto;
+            padding:12px 18px;
+            display:flex; justify-content:space-between; align-items:center;
+        }
+        .brand{ font-size:20px; font-weight:700; color:#60a5fa;}
+        .brand span{ color:#f97316;}
+        .nav-links{ display:flex; gap:14px; font-size:14px;}
+        .nav-links a{
+            padding:6px 12px; border-radius:999px;
+            text-decoration:none; color:#9ca3af;
+        }
+        .nav-links a:hover{ background:rgba(59,130,246,0.15); color:white;}
+        .nav-links .active{
+            background:linear-gradient(135deg,#1d4ed8,#22c55e);
+            color:white; font-weight:700;
+        }
+
+        header{
+            max-width:1080px; margin:32px auto 14px;
+            padding:0 18px;
+        }
+        header h1{
+            font-size:32px; margin:0; font-weight:800; color:white;
+        }
+        header p{ margin-top:8px; color:#9ca3af; font-size:15px;}
+
+        main{ max-width:1080px; margin:22px auto 60px; padding:0 18px;}
+
+        /* CARD BLOCKS */
+        .block{
+            background:#0f172a; border:1px solid #1e293b;
+            padding:26px; margin-bottom:22px;
+            border-radius:14px;
+            box-shadow:0 20px 40px rgba(0,0,0,0.5);
+            transition:.25s;
+        }
+        .block:hover{
+            transform:translateY(-5px);
+            box-shadow:0 34px 60px rgba(0,0,0,.65);
+        }
+        .block h2{ margin-top:0; font-size:22px; color:white;}
+        .block p{ color:#cbd5e1; font-size:15px; line-height:1.5;}
+        ul{ margin-top:10px; padding-left:22px;}
+        li{ margin-bottom:5px; color:#94a3b8;}
+
+        .highlight{
+            background:linear-gradient(90deg,#1d4ed8,#22c55e);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            font-weight:800;
+        }
+
+        footer{
+            text-align:center; padding:16px;
+            background:#020617; border-top:1px solid #0f172a;
+            color:#6b7280; font-size:14px; margin-top:50px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <div class="brand">FRAUD<span>SHIELD</span> AI</div>
+        <div class="nav-links">
+            <a href="index.html">Muammo & yechim</a>
+            <a href="team.html">Jamoa</a>
+            <a href="why-us.html" class="active">Nega aynan biz?</a>
+            <a href="roadmap.html">Yo‘l xaritasi</a>
+            <a href="tech.html">Texnik yechim</a>
+            <a href="demo.html">Demo / API</a>
+        </div>
+    </div>
+</nav>
+
+
+<header>
+    <h1><span class="highlight">Nega aynan biz?</span></h1>
+    <p>Bizning jamoa bu muammoni yecha olishini isbotlaydigan asosiy sabablar.</p>
+</header>
+
+
+<main>
+
+    <div class="block">
+        <h2>1. Haqiqiy real muammo ustida ishlash — Bank firibgarligi</h2>
+        <p>
+            Biz bank tizimlarida sodir bo‘ladigan firibgarliklarning chastotasi va murakkabligi 
+            ortib borayotganini aniqladik. Oddiy monitoringdan farqli ravishda, 
+            <b>transaktsiya xatti-harakatlaridan kelib chiqib bashorat qila oladigan tizim</b> zarur.
+        </p>
+    </div>
+
+    <div class="block">
+        <h2>2. Bizning AI model — real fraud patternlarni o‘rganadi</h2>
+        <ul>
+            <li>Millionlab tranzaksiyalar asosida o‘rgatilgan</li>
+            <li>Oddiy threshold emas — <b>pattern asosida qaror chiqaradi</b></li>
+            <li>Katta va tez-tez tranzaksiyalarni identifikatsiya qiladi</li>
+            <li>Fraud ehtimolini % qiymatda qaytaradi</li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <h2>3. Jamoa tajribasi & roli aniqligi</h2>
+        <p>
+            Bizda Model yaratuvchi, AI tahlilchi, Backend va Frontend ishlab chiqaruvchi,
+            xavfsizlik tahlilchisi hamda QA mavjud.
+            Rollar bo‘linishi kuchli — har kim aniq vazifada ishlaydi.
+        </p>
+    </div>
+
+    <div class="block">
+        <h2>4. Tez rivojlantirishga mos arxitektura</h2>
+        <ul>
+            <li>Kengaytiriladigan modulli backend</li>
+            <li>Fraud qoidalarini qo‘shish oson</li>
+            <li>API orqali tashqi bank tizimiga ulanish imkoniyati</li>
+        </ul>
+    </div>
+<section style="margin-top:40px;">
+    <h2 style="
+        font-size:32px; 
+        font-weight:700; 
+        text-align:center; 
+        margin-bottom:20px;
+        color:#0ef;
+        letter-spacing:1px;">
+        Jamoaning Mutaxassislik Kuchlari
+    </h2>
+
+    <p style="text-align:center; font-size:19px; opacity:0.95; max-width:950px; margin:auto;">
+        Bizning jamoamiz faqatgina texnik bilimga emas, balki kiberxavfsizlik bo‘yicha amaliy tajribaga ega
+        bo‘lgan mutaxassislardan shakllangan. Har bir a'zo kamida <b>3 yillik tajribaga ega</b>
+        bo‘lib, real tizimlar bilan ishlagan, ML asosida Fraud-detection modellar yaratgan,
+        serverga deploy qilgan va xavfsizlik tizimlarini kuchaytirishda ishtirok etgan.
+    </p>
+
+    <div style="
+        display:grid; 
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); 
+        gap:22px; 
+        margin-top:35px;
+        padding:0 10px;">
+        
+        <!-- Card 1 -->
+        <div style="
+            background:rgba(0,255,255,0.07);
+            border:1px solid rgba(0,255,255,0.18);
+            border-radius:12px;
+            padding:22px;
+            backdrop-filter:blur(10px);
+            transition:0.3s;
+            cursor:default;">
+            
+            <h3 style="color:#0ef; font-size:22px; margin-bottom:10px;">🔐 Cyber Security Expertise</h3>
+            <p style="opacity:0.9; font-size:17px;">
+                Pentesting, tarmoq himoyasi, anomal holatlarni aniqlash, xavf monitoringi va 
+                hujumlardan himoyalash bo‘yicha tajriba.
+            </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div style="
+            background:rgba(0,255,255,0.07);
+            border:1px solid rgba(0,255,255,0.18);
+            border-radius:12px;
+            padding:22px;
+            backdrop-filter:blur(10px);
+            transition:0.3s;">
+            
+            <h3 style="color:#0ef; font-size:22px; margin-bottom:10px;">📊 ML & Fraud Analysis</h3>
+            <p style="opacity:0.9; font-size:17px;">
+                Fraud scoring, anomaly detection, model o‘rgatish, feature engineering va 
+                real data bilan ishlash ko‘nikmalari.
+            </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div style="
+            background:rgba(0,255,255,0.07);
+            border:1px solid rgba(0,255,255,0.18);
+            border-radius:12px;
+            padding:22px;
+            backdrop-filter:blur(10px);
+            transition:0.3s;">
+            
+            <h3 style="color:#0ef; font-size:22px; margin-bottom:10px;">💻 Tech Stack</h3>
+            <p style="opacity:0.9; font-size:17px;">
+                Python, Flask, Sklearn, Pandas, Matplotlib, API, Deployment, Model Serving.  
+                To'g‘ri arxitektura + optimallash = minimal xatolik.
+            </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div style="
+            background:rgba(0,255,255,0.07);
+            border:1px solid rgba(0,255,255,0.18);
+            border-radius:12px;
+            padding:22px;
+            backdrop-filter:blur(10px);
+            transition:0.3s;">
+            
+            <h3 style="color:#0ef; font-size:22px; margin-bottom:10px;">🌍 International Learning</h3>
+            <p style="opacity:0.9; font-size:17px;">
+                Coursera, Google Cybersecurity, Udemy va boshqa xalqaro platformalarda o‘qigan.
+                Real-case bo‘yicha amaliy tajriba orttirgan mutahassislar.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+</main>
+</body>
+</html>

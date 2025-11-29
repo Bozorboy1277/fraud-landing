@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo & API — FraudShield AI</title>
+
+    <style>
+        body{
+            margin:0;
+            background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
+            color:#e5e7eb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        a{text-decoration:none;color:inherit;}
+
+        /* NAVBAR */
+        .navbar{
+            background:rgba(15,23,42,0.96);
+            position:sticky;
+            top:0;
+            z-index:10;
+            border-bottom:1px solid #1f2937;
+            backdrop-filter:blur(10px);
+        }
+        .nav-inner{
+            max-width:1080px;
+            margin:0 auto;
+            padding:12px 18px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .brand{
+            font-size:18px;
+            font-weight:800;
+            color:#60a5fa;
+            letter-spacing:0.05em;
+        }
+        .brand span{ color:#f97316;}
+        .nav-links{
+            display:flex;
+            gap:12px;
+            font-size:14px;
+        }
+        .nav-links a{
+            padding:6px 12px;
+            border-radius:999px;
+            color:#9ca3af;
+        }
+        .nav-links a:hover{
+            background:rgba(37,99,235,0.12);
+            color:#fff;
+        }
+        .nav-links a.active{
+            background:linear-gradient(135deg,#1d4ed8,#22c55e);
+            color:#fff;
+            font-weight:600;
+        }
+
+        header{
+            max-width:1080px;
+            margin:32px auto 0;
+            padding:0 18px;
+        }
+        header h1{
+            margin:0;
+            font-size:30px;
+            font-weight:800;
+            color:#e5e7eb;
+        }
+        header p{
+            margin-top:8px;
+            font-size:14px;
+            color:#9ca3af;
+        }
+
+        main{
+            max-width:1080px;
+            margin:24px auto 60px;
+            padding:0 18px;
+        }
+
+        .card{
+            background:#020617;
+            border-radius:14px;
+            border:1px solid #1e293b;
+            padding:22px 20px 26px 20px;
+            margin-bottom:22px;
+            box-shadow:0 24px 60px rgba(0,0,0,0.55);
+        }
+        .card h2{
+            margin-top:0;
+            font-size:22px;
+            color:#f9fafb;
+        }
+        .card p{
+            font-size:15px;
+            color:#cbd5e1;
+        }
+
+        .demo-flow{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+            gap:18px;
+            margin-top:14px;
+        }
+        .flow-box{
+            background:rgba(15,23,42,0.96);
+            border-radius:12px;
+            border:1px solid #1e293b;
+            padding:16px 14px;
+            font-size:14px;
+        }
+        .flow-title{
+            font-size:15px;
+            font-weight:600;
+            color:#bfdbfe;
+            margin-bottom:6px;
+        }
+
+        .steps{
+            counter-reset: step;
+            margin-top:10px;
+        }
+        .step{
+            position:relative;
+            padding-left:32px;
+            margin-bottom:12px;
+        }
+        .step::before{
+            counter-increment: step;
+            content: counter(step);
+            position:absolute;
+            left:0;
+            top:4px;
+            width:22px;
+            height:22px;
+            border-radius:999px;
+            background:linear-gradient(135deg,#22c55e,#0ea5e9);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:12px;
+            font-weight:700;
+            color:#020617;
+            box-shadow:0 0 10px rgba(34,197,94,0.9);
+        }
+        .step-title{
+            font-size:15px;
+            font-weight:600;
+            color:#e5e7eb;
+        }
+        .step-desc{
+            font-size:14px;
+            color:#9ca3af;
+            margin-top:2px;
+        }
+
+        pre{
+            background:#020617;
+            border-radius:10px;
+            border:1px solid #1f2937;
+            padding:12px 10px;
+            font-size:13px;
+            overflow-x:auto;
+        }
+        code{
+            font-family: "JetBrains Mono", "Fira Code", monospace;
+        }
+
+        .pill{
+            display:inline-block;
+            font-size:12px;
+            padding:3px 8px;
+            border-radius:999px;
+            border:1px solid #1f2937;
+            background:rgba(15,23,42,0.9);
+            color:#9ca3af;
+            margin:2px 4px 2px 0;
+        }
+
+        footer{
+            text-align:center;
+            padding:16px;
+            font-size:13px;
+            color:#6b7280;
+            border-top:1px solid #020617;
+            background:#020617;
+            margin-top:40px;
+        }
+
+        @media (max-width:700px){
+            header h1{ font-size:24px; }
+            .nav-inner{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <div class="brand">FRAUD<span>SHIELD</span> AI</div>
+        <div class="nav-links">
+            <a href="index.html">Muammo & yechim</a>
+            <a href="team.html">Jamoa</a>
+            <a href="why-us.html">Nega biz?</a>
+            <a href="roadmap.html">Yo‘l xaritasi</a>
+            <a href="tech.html">Texnik yechim</a>
+            <a href="demo.html" class="active">Demo / API</a>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1>Demo & API ishlash prinsipi</h1>
+    <p>
+        Bu bo‘limda tizimni qanday test qilish, demo qanday ishlashi va API orqali 
+        firibgarlik ehtimoli qanday olinishi tushuntiriladi.
+    </p>
+</header>
+
+<main>
+
+    <!-- 1. LIVE DEMO KONSEPSIYASI -->
+    <section class="card">
+        <h2>1. Demo qanday ishlaydi?</h2>
+        <p>
+            Demo — bu bank tizimining soddalashtirilgan modeli. Unda foydalanuvchi tranzaksiya 
+            parametrlarini kiritadi, tizim esa real ML modeli yordamida tranzaksiyaning 
+            fraud bo‘lish ehtimolini hisoblab beradi.
+        </p>
+
+        <div class="demo-flow">
+            <div class="flow-box">
+                <div class="flow-title">Foydalanuvchi kirita oladigan ma’lumotlar</div>
+                <ul>
+                    <li>Tranzaksiya turi (PAYMENT, TRANSFER, CASH_OUT ...)</li>
+                    <li>Tranzaksiya summasi (amount)</li>
+                    <li>Jo‘natuvchi va qabul qiluvchining eski/yangi balanslari</li>
+                    <li>Vaqt (timestamp) — kun davomida qaysi blokda ekanligi</li>
+                </ul>
+            </div>
+            <div class="flow-box">
+                <div class="flow-title">Tizim nima qiladi?</div>
+                <ul>
+                    <li>Ma’lumotlarni modelga mos formatga keltiradi</li>
+                    <li>Random Forest modeliga yuboradi</li>
+                    <li>Fraud ehtimolini hisoblaydi</li>
+                    <li>Ekranda xavf darajasini ko‘rsatadi (normal / shubhali / xavfli)</li>
+                </ul>
+            </div>
+            <div class="flow-box">
+                <div class="flow-title">Natija qanday ko‘rinadi?</div>
+                <ul>
+                    <li>Fraud ehtimoli: masalan, 0.73 (73%)</li>
+                    <li>Model qarori: 0 — normal, 1 — fraud</li>
+                    <li>Vizual indikator: yashil / sariq / qizil zona</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. FOYDALANUVCHI OQIMI (STEP-BY-STEP) -->
+    <section class="card">
+        <h2>2. Foydalanuvchi oqimi (UI bo‘yicha)</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-title">Tranzaksiya formasi to‘ldiriladi</div>
+                <div class="step-desc">
+                    Foydalanuvchi tranzaksiya turi, summa va balans ma’lumotlarini kiritadi.
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-title">“Baholash” tugmasi bosiladi</div>
+                <div class="step-desc">
+                    Tizim bu ma’lumotlarni backend API ga yuboradi.
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-title">AI modeli natijani hisoblaydi</div>
+                <div class="step-desc">
+                    RandomForest modeli fraud ehtimolini qaytaradi.
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-title">UI natijani ko‘rsatadi</div>
+                <div class="step-desc">
+                    Xavf darajasi vizual ko‘rinishda (rangli indikator va matn bilan) chiqadi.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. API TUSHUNTIRISH (SODDA) -->
+    <section class="card">
+        <h2>3. API ishlash prinsipi (soddalashtirilgan)</h2>
+        <p>
+            API — bank tizimi va AI modeli o‘rtasidagi ko‘prik. Real integratsiya holatida bank 
+            tizimi tranzaksiya ma’lumotlarini bizning <b>/predict</b> endpoint’iga yuboradi 
+            va javob sifatida fraud ehtimolini oladi.
+        </p>
+
+        <div style="margin-bottom:8px;">
+            <span class="pill">URL: /predict</span>
+            <span class="pill">Method: POST</span>
+            <span class="pill">Format: JSON</span>
+        </div>
+
+        <p><b>So‘rov namunasi (request):</b></p>
+        <pre><code>{
+  "type": "TRANSFER",
+  "amount": 90000000,
+  "oldbalanceOrg": 100,
+  "newbalanceOrig": 0,
+  "oldbalanceDest": 0,
+  "newbalanceDest": 90000000,
+  "timestamp": 1
+}</code></pre>
+
+        <p><b>Javob namunasi (response):</b></p>
+        <pre><code>{
+  "success": true,
+  "data": {
+    "input": {
+      "type": "TRANSFER",
+      "amount": 90000000,
+      "oldbalanceOrg": 100,
+      "newbalanceOrig": 0,
+      "oldbalanceDest": 0,
+      "newbalanceDest": 90000000,
+      "timestamp": 1
+    },
+    "fraud_probability": 0.87,
+    "prediction": 1,
+    "threshold": 0.5
+  }
+}</code></pre>
+
+        <p>
+            Real bank tizimi ushbu <b>fraud_probability</b> va <b>prediction</b> natijasiga qarab qaror qabul qilishi mumkin:
+            tranzaksiyani o‘tkazish, kechiktirish, qo‘shimcha tasdiq so‘rash yoki bloklash.
+        </p>
+    </section>
+
+    <!-- 4. MISOL SENARIY -->
+    <section class="card">
+        <h2>4. Misol senariy: katta xavfli operatsiyani aniqlash</h2>
+        <p>
+            Tasavvur qilamiz, mijoz kartasidan odatda 300 000–500 000 so‘m atrofida to‘lovlar 
+            amalga oshirib keladi. Bir kuni birdaniga 90 000 000 so‘m pul boshqa hisob raqamga 
+            o‘tkazilmoqda.
+        </p>
+
+        <ul>
+            <li>Tizim summani, balans o‘zgarishini va tranzaksiya turini baholaydi</li>
+            <li>Model fraud ehtimolini yuqori deb topadi (masalan, 0.87)</li>
+            <li>Tranzaksiya avtomatik ravishda “xavfli” deb flag qilinadi</li>
+            <li>Karta vaqtinchalik bloklanadi, mijozdan qo‘shimcha tasdiq so‘raladi</li>
+        </ul>
+
+        <p>
+            Shu tarzda tizim mijoz mablag‘ini himoya qiladi va bank riskini kamaytiradi.
+        </p>
+    </section>
+
+</main>
+</body>
+</html>

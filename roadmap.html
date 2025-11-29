@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yo‘l xaritasi — FraudShield AI</title>
+
+    <style>
+        body{
+            margin:0;
+            background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
+            color:#e5e7eb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        a{text-decoration:none;color:inherit;}
+
+        /* NAVBAR */
+        .navbar{
+            background:rgba(15,23,42,0.96);
+            position:sticky;
+            top:0;
+            z-index:10;
+            border-bottom:1px solid #1f2937;
+            backdrop-filter:blur(10px);
+        }
+        .nav-inner{
+            max-width:1080px;
+            margin:0 auto;
+            padding:12px 18px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .brand{
+            font-size:18px;
+            font-weight:800;
+            color:#60a5fa;
+            letter-spacing:0.05em;
+        }
+        .brand span{ color:#f97316;}
+        .nav-links{
+            display:flex;
+            gap:12px;
+            font-size:14px;
+        }
+        .nav-links a{
+            padding:6px 12px;
+            border-radius:999px;
+            color:#9ca3af;
+        }
+        .nav-links a:hover{
+            background:rgba(37,99,235,0.12);
+            color:#fff;
+        }
+        .nav-links a.active{
+            background:linear-gradient(135deg,#1d4ed8,#22c55e);
+            color:#fff;
+            font-weight:600;
+        }
+
+        header{
+            max-width:1080px;
+            margin:32px auto 0;
+            padding:0 18px;
+        }
+        header h1{
+            margin:0;
+            font-size:32px;
+            font-weight:800;
+        }
+        header p{
+            margin-top:8px;
+            font-size:14px;
+            color:#9ca3af;
+        }
+        .stage-pill{
+            display:inline-block;
+            margin-top:10px;
+            padding:4px 12px;
+            border-radius:999px;
+            font-size:12px;
+            border:1px solid #22c55e;
+            background:rgba(34,197,94,0.09);
+            color:#bbf7d0;
+        }
+
+        main{
+            max-width:1080px;
+            margin:24px auto 60px;
+            padding:0 18px;
+        }
+
+        .card{
+            background:#020617;
+            border-radius:14px;
+            border:1px solid #1e293b;
+            padding:24px 20px 28px 20px;
+            margin-bottom:22px;
+            box-shadow:0 24px 60px rgba(0,0,0,0.55);
+        }
+        .card h2{
+            margin-top:0;
+            font-size:22px;
+            color:#f9fafb;
+        }
+        .card p{
+            font-size:15px;
+            color:#cbd5e1;
+        }
+
+        .status-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:14px;
+            margin-top:16px;
+        }
+        .status-box{
+            border-radius:12px;
+            padding:16px 14px;
+            background:rgba(15,23,42,0.95);
+            border:1px solid #1e40af;
+            font-size:14px;
+        }
+        .status-label{
+            font-size:12px;
+            text-transform:uppercase;
+            letter-spacing:0.08em;
+            color:#93c5fd;
+            margin-bottom:4px;
+        }
+        .status-value{
+            font-size:16px;
+            font-weight:700;
+        }
+
+        /* TIMELINE */
+        .timeline{
+            margin-top:10px;
+        }
+        .timeline-item{
+            position:relative;
+            padding-left:26px;
+            margin-bottom:18px;
+        }
+        .timeline-dot{
+            position:absolute;
+            left:0;
+            top:4px;
+            width:12px;
+            height:12px;
+            border-radius:999px;
+            background:linear-gradient(135deg,#22c55e,#22d3ee);
+            box-shadow:0 0 10px rgba(34,197,94,0.9);
+        }
+        .timeline-title{
+            font-size:15px;
+            font-weight:600;
+            color:#e5e7eb;
+        }
+        .timeline-desc{
+            font-size:14px;
+            color:#9ca3af;
+            margin-top:2px;
+        }
+        .timeline-tag{
+            display:inline-block;
+            margin-top:4px;
+            font-size:11px;
+            padding:2px 8px;
+            border-radius:999px;
+            background:rgba(37,99,235,0.18);
+            color:#bfdbfe;
+        }
+
+        /* COLUMN ROADMAP */
+        .col-roadmap{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:18px;
+            margin-top:14px;
+        }
+        .phase{
+            background:#020617;
+            border-radius:12px;
+            border:1px solid #1f2937;
+            padding:18px 14px;
+            font-size:14px;
+        }
+        .phase h3{
+            margin-top:0;
+            font-size:16px;
+            color:#bfdbfe;
+        }
+        .phase ul{
+            margin:6px 0 0 16px;
+            padding:0;
+        }
+        .phase li{
+            margin-bottom:5px;
+            color:#9ca3af;
+        }
+
+        footer{
+            text-align:center;
+            padding:16px;
+            font-size:13px;
+            color:#6b7280;
+            border-top:1px solid #020617;
+            background:#020617;
+            margin-top:40px;
+        }
+
+        @media (max-width:700px){
+            header h1{ font-size:24px; }
+            .nav-inner{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <div class="brand">FRAUD<span>SHIELD</span> AI</div>
+        <div class="nav-links">
+            <a href="index.html">Muammo & yechim</a>
+            <a href="team.html">Jamoa</a>
+            <a href="why-us.html">Nega biz?</a>
+            <a href="roadmap.html" class="active">Yo‘l xaritasi</a>
+            <a href="tech.html">Texnik yechim</a>
+            <a href="demo.html">Demo / API</a>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1>Yo‘l xaritasi va rivojlanish bosqichlari</h1>
+    <p>
+        Loyihaning hozirgi statusi, keyingi qadamlari va real bank tizimiga integratsiya rejasi.
+    </p>
+    <div class="stage-pill">
+        Hozirgi bosqich: MVP + Ishlaydigan demo (online)
+    </div>
+</header>
+
+<main>
+
+    <!-- HOZIRGI STATUS -->
+    <section class="card">
+        <h2>1. Hozirgi holat (Current Stage)</h2>
+        <p>
+            Hozirda bizda <b>ishlaydigan Fraud Detection MVP</b> mavjud:
+        </p>
+        <div class="status-grid">
+            <div class="status-box">
+                <div class="status-label">Model holati</div>
+                <div class="status-value">ML modeli o‘qitilgan</div>
+                <div style="font-size:12px; color:#9ca3af; margin-top:4px;">
+                    Random Forest asosida tranzaksiyalar fraud / normal deb baholanadi.
+                </div>
+            </div>
+            <div class="status-box">
+                <div class="status-label">API</div>
+                <div class="status-value">REST API ishga tushgan</div>
+                <div style="font-size:12px; color:#9ca3af; margin-top:4px;">
+                    /predict endpoint orqali real so‘rovlar qabul qilinadi.
+                </div>
+            </div>
+            <div class="status-box">
+                <div class="status-label">Demo</div>
+                <div class="status-value">Web UI mavjud</div>
+                <div style="font-size:12px; color:#9ca3af; margin-top:4px;">
+                    HTML + CSS asosida risk bahosini ko‘rsatuvchi demo interfeys ishlab chiqilgan.
+                </div>
+            </div>
+        </div>
+        <p style="margin-top:16px;">
+            Hackaton bosqichida bizning maqsadimiz — <b>muammoga to‘g‘ri yechim konsepsiyasini, 
+            ishlaydigan modelni va integratsiyaga tayyor API nuqtasini</b> ko‘rsatish.
+        </p>
+    </section>
+
+    <!-- VIZUAL TIMELINE -->
+    <section class="card">
+        <h2>2. Rivojlanish yo‘nalishlari (Timeline)</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-title">Bosqich 1 — Hackaton MVP</div>
+                <div class="timeline-desc">
+                    Model o‘qitildi, initial API yozildi, UI demo tayyorlandi,
+                    real datasetlar bilan sinovdan o‘tkazildi.
+                </div>
+                <span class="timeline-tag">Hozirgi bosqich — bajarilgan ✅</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-title">Bosqich 2 — Pilot loyiha (1 ta bank bilan)</div>
+                <div class="timeline-desc">
+                    Tranzaksiyalarni real yoki yarim-real vaqt rejimida qabul qilish, 
+                    natijalarni ko‘rish uchun ichki dashboard va alert tizimini joriy etish.
+                </div>
+                <span class="timeline-tag">Reja: pilot integratsiya</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-title">Bosqich 3 — Ko‘lamni kengaytirish</div>
+                <div class="timeline-desc">
+                    Bir nechta bank tizimlari bilan integratsiya, modelni qayta o‘qitish,
+                    turli segmentlar (jismoniy shaxs, biznes mijozlar) bo‘yicha moslashtirish.
+                </div>
+                <span class="timeline-tag">Reja: Scale-up + Optimallashtirish</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-title">Bosqich 4 — To‘liq mahsulot va tijoratlash</div>
+                <div class="timeline-desc">
+                    Servisni SaaS modeli sifatida taqdim etish, monitoring paneli, 
+                    statistika, SLA, support jamoa bilan to‘liq mahsulot sifatida ishlash.
+                </div>
+                <span class="timeline-tag">Reja: Product-level xizmat</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMALIY REJA / IMPLEMENTATION -->
+    <section class="card">
+        <h2>3. Amaliy rejalar (Implementation plan)</h2>
+        <p>
+            Texnik rivojlantirish bo‘yicha aniq qadamlar:
+        </p>
+
+        <div class="col-roadmap">
+            <div class="phase">
+                <h3>Qadam 1 — Modelni takomillashtirish</h3>
+                <ul>
+                    <li>Ko‘proq real bank ma’lumotlari bilan qayta o‘qitish</li>
+                    <li>SMOTE, class-balancing orqali fraud sinfini muvozanatlashtirish</li>
+                    <li>Precision / Recall / AUC metrikalarini yaxshilash</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Qadam 2 — Alert va monitoring tizimi</h3>
+                <ul>
+                    <li>Fraud ehtimoli ma’lum threshold’dan oshsa, kartani avtomatik flag qilish</li>
+                    <li>Telegram/Email orqali operatorlarga ogohlantirish yuborish</li>
+                    <li>“Risk dashboard” — kunlik va oylik hisobotlar</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Qadam 3 — Integratsiya va xavfsizlik</h3>
+                <ul>
+                    <li>Bankning mavjud core-banking tizimi bilan API integratsiya</li>
+                    <li>Audit log, rolga asoslangan kirish (RBAC)</li>
+                    <li>HTTPS, token-based auth, logging va monitoring</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Qadam 4 — Ko‘lamni oshirish</h3>
+                <ul>
+                    <li>Docker/Kubernetes yoki cloud native arxitekturaga o‘tish</li>
+                    <li>Parallel requestlarni ko‘paytirish, latency ni kamaytirish</li>
+                    <li>Yangi AI modellar (Deep Learning, Graph-based fraud detection)ni sinab ko‘rish</li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="margin-top:16px;">
+            Shu yo‘l xaritasi orqali biz hackaton bosqichidan 
+            <b>real bank tizimlarida ishlaydigan, kengaytiriladigan, xavfsiz va monitoringga ega mahsulot</b>
+            darajasiga chiqishni rejalashtirganmiz.
+        </p>
+    </section>
+
+</main>
+
+
+
+</body>
+</html>

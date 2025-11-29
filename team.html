@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamoa — FraudShield AI</title>
+
+    <style>
+        body{
+            margin:0;
+            background: radial-gradient(circle at top, #0a0f1e 0, #000 60%);
+            color:#e5e7eb;
+            font-family:sans-serif;
+        }
+        a{text-decoration:none;color:inherit;}
+
+        /* NAVBAR */
+        .navbar{
+            background:rgba(15,23,42,0.95);
+            border-bottom:1px solid #1f2937;
+            position:sticky; top:0; z-index:5;
+            backdrop-filter:blur(8px);
+        }
+        .nav-inner{
+            max-width:1080px;
+            margin:0 auto;
+            padding:12px 18px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .brand{
+            font-size:17px;
+            font-weight:700;
+            color:#60a5fa;
+        }
+        .brand span{ color:#f97316; }
+        .nav-links{
+            display:flex; gap:12px; font-size:14px;
+        }
+        .nav-links a{
+            padding:6px 12px;
+            border-radius:999px;
+            color:#9ca3af;
+        }
+        .nav-links a:hover{
+            background:rgba(37,99,235,0.1);
+            color:#fff;
+        }
+        .nav-links a.active{
+            background:linear-gradient(135deg,#1d4ed8,#22c55e);
+            color:#fff; font-weight:bold;
+        }
+
+        header{
+            max-width:1080px; margin:30px auto 0;
+            padding:0 18px;
+        }
+        header h1{ margin:0; font-size:30px; font-weight:700; }
+        header p{ margin-top:6px; color:#9ca3af; font-size:14px; }
+
+        /* TEAM SECTION */
+        main{
+            max-width:1080px; margin:30px auto;
+            padding:0 18px 40px 18px;
+        }
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+            gap:18px;
+        }
+        .member-card{
+            background:#0f172a;
+            border:1px solid #1f2937;
+            border-radius:12px;
+            padding:18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.5);
+            transition:0.25s;
+        }
+        .member-card:hover{
+            transform:translateY(-6px);
+            box-shadow:0 26px 55px rgba(0,0,0,0.65);
+        }
+        .name{
+            font-size:18px; font-weight:700; color:#fff; margin:0;
+        }
+        .role{
+            margin-top:4px; font-size:14px; color:#22c55e; font-weight:600;
+        }
+        .skills{
+            margin-top:12px; font-size:13px; color:#9ca3af;
+        }
+        ul{ margin:6px 0 6px 18px; padding:0; }
+        li{ margin-bottom:4px; font-size:13px; }
+
+        .link{
+            display:inline-block; margin-top:10px; font-size:12px;
+            padding:5px 10px; border-radius:999px;
+            background:rgba(37,99,235,0.18);
+            border:1px solid #1e3a8a;
+        }
+        .link:hover{ background:#1d4ed8; color:white; }
+
+        footer{
+            text-align:center; padding:16px; color:#6b7280;
+            font-size:13px; background:#020617; margin-top:40px;
+            border-top:1px solid #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <div class="brand">FRAUD<span>SHIELD</span> AI</div>
+        <div class="nav-links">
+            <a href="index.html">Muammo & yechim</a>
+            <a href="team.html" class="active">Jamoa</a>
+            <a href="why-us.html">Nega biz?</a>
+            <a href="roadmap.html">Yo‘l xaritasi</a>
+            <a href="tech.html">Texnik yechim</a>
+            <a href="demo.html">Demo / API</a>
+        </div>
+    </div>
+</nav>
+
+
+<header>
+    <h1>Bizning Jamoa</h1>
+    <p>AI asosidagi Fraud Monitoring tizimini yaratgan kuchli 5 kishilik komanda</p>
+</header>
+
+
+<main>
+    <div class="grid">
+
+        <!-- 1 -->
+        <div class="member-card">
+            <p class="name">Elmurod Urinov</p>
+            <p class="role">Team Lead / Backend + AI Model Architect</p>
+
+            <div class="skills">
+                <b>Skill-set:</b>
+                <ul>
+                    <li>Machine Learning model train & evaluation</li>
+                    <li>Backend API structure & architecture design</li>
+                    <li>Python, Flask, Pandas, Scikit-learn</li>
+                    <li>Model explainability & risk calibration</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="member-card">
+            <p class="name">Islombekov Bozorboy</p>
+            <p class="role">Fullstack Developer</p>
+
+            <div class="skills">
+                <b>Stack & ko‘nikmalar:</b>
+                <ul>
+                    <li>Flask, HTML, CSS, Deployment (Render)</li>
+                    <li>Frontend UI ishlab chiqish</li>
+                    <li>API bilan ishlash & integratsiya</li>
+                    <li>GitHub workflow + project building</li>
+                </ul>
+            </div>
+
+            <a class="link" href="https://github.com/Bozorboy1277" target="_blank">GitHub profil →</a>
+        </div>
+
+        <!-- 3 -->
+        <div class="member-card">
+            <p class="name">Babayazov Saidbek</p>
+            <p class="role">Data Analyst & Feature Engineering</p>
+
+            <div class="skills">
+                <b>Ko‘nikmalar:</b>
+                <ul>
+                    <li>Data Cleaning, Fraud Pattern Extraction</li>
+                    <li>Feature selection & metric analysis</li>
+                    <li>NumPy, Pandas, Seaborn</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="member-card">
+            <p class="name">Begimov Abbos</p>
+            <p class="role">Security Analyst / Risk Scenario Design</p>
+
+            <div class="skills">
+                <b>Yo‘nalish va skillar:</b>
+                <ul>
+                    <li>Fraud risk scenario monitoring</li>
+                    <li>Real banking threat cases tahlili</li>
+                    <li>Security driven decision logic handling</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="member-card">
+            <p class="name">Dilmurod Yusupov</p>
+            <p class="role">QA Tester & Documentation Specialist</p>
+
+            <div class="skills">
+                <b>Ko‘nikmalar:</b>
+                <ul>
+                    <li>Test case & bug tracking</li>
+                    <li>System behaviour audit</li>
+                    <li>High clarity project documentation</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</main>
+</body>
+</html>
