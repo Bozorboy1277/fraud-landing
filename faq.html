@@ -1,89 +1,186 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ | Fraud Detection System</title>
-<link rel="stylesheet" href="../static/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — FraudShield AI</title>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        body{
+            margin:0;
+            padding:0;
+            background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+            color:#e5e7eb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height:1.6;
+        }
+        a{text-decoration:none;color:inherit;}
 
-<style>
-    body{
-        background:#0b1220;
-        color:white;
-        font-family: "Segoe UI", sans-serif;
-        margin:0;
-        padding:0;
-    }
+        /* Navbar */
+        .navbar{
+            position:sticky;
+            top:0;
+            z-index:10;
+            background:rgba(15,23,42,0.95);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid #1f2937;
+        }
+        .nav-inner{
+            max-width:1080px;
+            margin:0 auto;
+            padding:12px 18px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+        .brand{
+            font-weight:700;
+            letter-spacing:0.04em;
+            font-size:16px;
+            color:#60a5fa;
+        }
+        .brand span{
+            color:#f97316;
+        }
+        .nav-links{
+            display:flex;
+            gap:14px;
+            font-size:14px;
+        }
+        .nav-links a{
+            padding:6px 12px;
+            border-radius:999px;
+            border:1px solid transparent;
+            color:#9ca3af;
+        }
+        .nav-links a:hover{
+            border-color:#1d4ed8;
+            color:#e5e7eb;
+            background:rgba(37,99,235,0.08);
+        }
+        .nav-links a.active{
+            background:linear-gradient(135deg,#1d4ed8,#22c55e);
+            color:#f9fafb;
+            border-color:transparent;
+            font-weight:600;
+        }
 
-    .container{
-        width:85%;
-        margin:auto;
-        padding:60px 0;
-    }
+        /* Header */
+        header{
+            max-width:1080px;
+            margin:28px auto 0 auto;
+            padding:10px 18px 0 18px;
+        }
+        header h1{
+            margin:0;
+            font-size:30px;
+            color:#f9fafb;
+        }
+        header p{
+            margin:6px 0 0 0;
+            color:#9ca3af;
+            font-size:14px;
+        }
+        .tagline{
+            margin-top:8px;
+            font-size:13px;
+            color:#6b7280;
+        }
 
-    h1{
-        text-align:center;
-        font-size:40px;
-        color:#00e0ff;
-        margin-bottom:40px;
-    }
+        /* Main content */
+        main{
+            max-width:1080px;
+            margin:18px auto 40px auto;
+            padding:0 18px 40px 18px;
+        }
+        .card{
+            background:rgba(15,23,42,0.98);
+            border-radius:14px;
+            padding:22px 20px 26px 20px;
+            border:1px solid #1f2937;
+            box-shadow:0 24px 60px rgba(0,0,0,0.55);
+        }
+        h2{
+            margin-top:0;
+            font-size:24px;
+            color:#60a5fa;
+        }
+        h3{
+            margin-bottom:6px;
+            margin-top:20px;
+            font-size:18px;
+            color:#93c5fd;
+        }
+        p{
+            font-size:15px;
+            margin:8px 0;
+        }
 
-    .faq-item{
-        background:#101b2e;
-        border:1px solid #162542;
-        border-radius:10px;
-        padding:18px 22px;
-        margin-bottom:14px;
-        cursor:pointer;
-        transition:0.3s;
-    }
+        /* FAQ accordion */
+        .faq-list{
+            margin-top:10px;
+        }
+        .faq-item{
+            border-bottom:1px solid #1f2937;
+        }
+        .faq-question{
+            width:100%;
+            text-align:left;
+            background:none;
+            border:none;
+            padding:14px 0;
+            font-size:15px;
+            color:#e5e7eb;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            cursor:pointer;
+        }
+        .faq-question span{
+            flex:1;
+            text-align:left;
+        }
+        .faq-toggle{
+            font-size:18px;
+            margin-left:10px;
+            color:#9ca3af;
+        }
+        .faq-answer{
+            max-height:0;
+            overflow:hidden;
+            transition:max-height 0.25s ease-out;
+            font-size:14px;
+            color:#9ca3af;
+            padding-right:4px;
+        }
+        .faq-answer-inner{
+            padding:0 0 12px 0;
+        }
+        .faq-item.active .faq-answer{
+            max-height:200px;
+            transition:max-height 0.3s ease-in;
+        }
+        .faq-item.active .faq-toggle{
+            transform:rotate(90deg);
+        }
 
-    .faq-item:hover{
-        background:#142645;
-        transform:scale(1.01);
-    }
-
-    .faq-question{
-        font-size:19px;
-        font-weight:bold;
-    }
-
-    .faq-answer{
-        display:none;
-        font-size:15px;
-        color:#bbd6f7;
-        margin-top:10px;
-        line-height:1.6;
-    }
-
-    .faq-item.open .faq-answer{ display:block; }
-
-    .back-btn{
-        text-align:center;
-        margin-top:40px;
-    }
-    .back-btn a{
-        background:#00e0ff;
-        color:#000;
-        font-weight:bold;
-        text-decoration:none;
-        border-radius:8px;
-        padding:12px 25px;
-        transition:.3s;
-    }
-    .back-btn a:hover{ background:#00c0dd; }
-
-</style>
-
-<script>
-    function toggleFAQ(el){
-        el.classList.toggle("open");
-    }
-</script>
-
+        @media (max-width:700px){
+            .nav-inner{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:8px;
+            }
+            header h1{
+                font-size:24px;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+
+<!-- NAVBAR -->
 <nav class="navbar">
     <div class="nav-inner">
         <div class="brand">
@@ -101,92 +198,193 @@
     </div>
 </nav>
 
-    
-<div class="container">
-
-    <h1>FAQ – Eng ko‘p beriladigan savollar</h1>
-
-    <!-- === 15 FAQ ITEM === -->
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 1. Tizim qaysi muammoni hal qiladi?</div>
-        <div class="faq-answer">Banklarda firibgarlik tranzaksiyalarini aniqlash ko‘pincha kechikadi. Bizning AI tizimimiz esa bu jarayonni real vaqtda bajaradi.</div>
+<!-- HEADER -->
+<header>
+    <h1>FAQ — eng ko‘p beriladigan savollar</h1>
+    <p>FraudShield AI tizimi bo‘yicha tez-tez so‘raladigan savollar va qisqa javoblar.</p>
+    <div class="tagline">
+        Taqdimot vaqtida hakamlar va bank mutaxassislari tezda tushunishi uchun mo‘ljallangan.
     </div>
+</header>
 
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 2. Model firibgarlikni qanday aniqlaydi?</div>
-        <div class="faq-answer">Random Forest ML modeli tranzaksiya summasi, balanslar, vaqt, tranzaksiya yo‘nalishi va boshqa xususiyatlar asosida ehtimolni hisoblaydi.</div>
+<!-- MAIN CONTENT -->
+<main>
+    <div class="card">
+        <h2>Savollar va javoblar</h2>
+
+        <div class="faq-list">
+            <!-- 1 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>1. Tizim qaysi muammoni hal qiladi?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Tizim bank kartalari va hisob raqamlari bo‘yicha firibgarlik tranzaksiyalarini
+                        real vaqt rejimida aniqlashga yordam beradi. Model katta miqdordagi yoki
+                        noodatiy operatsiyalarni flag qilib, mijoz mablag‘ini himoya qilishni
+                        avtomatlashtiradi.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>2. Sizlar qaysi texnologiyalarni ishlatyapsiz?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Backend: Python (Flask), Machine Learning: scikit-learn (Random Forest),
+                        ma’lumotlar tahlili: pandas, numpy. Model REST API ko‘rinishida
+                        taqdim etiladi va istalgan bank tizimiga HTTP orqali ulanishi mumkin.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>3. Model real bank ma’lumotlarida ishlay oladimi?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Ha, model strukturasi real tranzaksiya loglari bilan ishlashga
+                        moslab tuzilgan. Hozir prototip bosqichida ochiq datasetlar asosida
+                        o‘qitilgan, lekin bankning tarixiy ma’lumotlari bilan qayta o‘qitish
+                        orqali aniq natijaga erishish mumkin.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>4. False positive (noto‘g‘ri bloklangan tranzaksiya) muammosi qanday hal qilinadi?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Model natijasini qattiq bloklashdan ko‘ra “risk balli” sifatida
+                        ishlatamiz. High-risk operatsiyalar qo‘shimcha verifikatsiyaga
+                        yuboriladi (SMS, yuzni tasdiqlash, qo‘ng‘iroq). Threshold qiymatini
+                        bank siyosatiga qarab moslashtirish mumkin.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>5. Tizim qanchalik tez ishlaydi?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Random Forest modeli optimallashtirilgan holda millisekundlar ichida
+                        javob qaytaradi. Prototip darajasida ham real vaqt rejimida API
+                        ga so‘rov yuborish va javob olish 50–100 ms oralig‘ida bo‘lishi kutilmoqda
+                        (infratuzilmaga bog‘liq).
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>6. Sizlar AI’ni qayerda ishlatyapsiz – modelda yoki qo‘shimcha modullarda?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Asosiy AI komponenti – bu firibgarlik ehtimolini baholovchi Random
+                        Forest modeli. Keyingi bosqichlarda anomaliya deteksiyasi, sequence
+                        modelling (LSTM/Transformer) va graf asosidagi fraud tarmoqlarini tahlil
+                        qilish kabi modullarni ham qo‘shish rejalashtirilgan.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>7. Bu tizim bankning mavjud core banking tizimi bilan qanday integratsiya qilinadi?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Integratsiya RESTful API orqali amalga oshiriladi. Tranzaksiya
+                        so‘rovi paydo bo‘lganda bank tizimi bizning API’ga minimal feature’lar
+                        to‘plami bilan so‘rov yuboradi va 0–1 oralig‘ida risk ballini oladi.
+                        Javobga qarab operatsiyani tasdiqlash, kutishga qo‘yish yoki bloklash
+                        mumkin.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>8. Maxfiylik va ma’lumotlar xavfsizligi qanday ta’minlanadi?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Model faqat texnik atributlar bilan ishlaydi (summa, vaqt,
+                        balans farqlari va h.k.). Shaxsiy ma’lumotlarni (F.I.O, PINFL,
+                        telefon) uzatmaslik mumkin. API HTTPS orqali himoyalangan kanal
+                        ustida ishlashi ko‘zda tutilgan.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>9. Modelni qayta o‘qitish va monitoring kim tomonidan amalga oshiriladi?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Jamoamiz data science va cybersecurity yo‘nalishida tajribaga ega.
+                        Pilot bosqichda modelni biz o‘qitamiz va monitoring qilamiz.
+                        Keyinchalik bankning ichki jamoasiga hujjatlar va pipeline berilib,
+                        ularning o‘zlari modelni muntazam yangilab borishlari mumkin.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>10. Tizimni faqat banklar uchunmi, yoki boshqa sohalarga ham moslash mumkinmi?</span>
+                    <span class="faq-toggle">›</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Asosiy fokus – bank kartalari va elektron to‘lovlar. Lekin shu
+                        yondashuvni onlayn savdo platformalari, fintex servislar yoki
+                        mikromoliya tashkilotlaridagi tranzaksiya xavfini baholashda ham
+                        moslashtirish mumkin.
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+</main>
 
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 3. Real bank tizimlariga ulanish mumkinmi?</div>
-        <div class="faq-answer">Ha. REST API orqali backendga ulanish imkoniyati bor. JSON request/response formatida ishlaydi.</div>
-    </div>
+<script>
+    // Oddiy FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(function(item){
+        item.querySelector('.faq-question').addEventListener('click', function(){
+            item.classList.toggle('active');
+        });
+    });
+</script>
 
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 4. Baholash tezligi qancha?</div>
-        <div class="faq-answer">O‘rtacha 10–30 ms ichida natija qaytadi. Katta oqimlar uchun optimizatsiya mavjud.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 5. Modelni qayta o‘qitish mumkinmi?</div>
-        <div class="faq-answer">Ha. Yangi tranzaksiya ma’lumotlari bilan retraining qilib samaradorlikni oshirish mumkin.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 6. Samardorlik qanday?</div>
-        <div class="faq-answer">Hozirgi natija ~98% aniqlik bilan fraudni aniqlaydi. Keyingi bosqichda deep learning qo‘shiladi.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 7. API xavfsizligi qanday ta’minlanadi?</div>
-        <div class="faq-answer">HTTPS orqali uzatiladi, autentifikatsiya qo‘shish mumkin, token asosida kirish qo‘llab-quvvatlanadi.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 8. Loyihani kengaytirish mumkinmi?</div>
-        <div class="faq-answer">Ha, modulli arxitekturaga ega. Qo‘shimcha ML modeli, dashboard yoki monitoring tizimi qo‘shilishi mumkin.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 9. Demo versiya mavjudmi?</div>
-        <div class="faq-answer">Veb interfeys orqali sinab ko‘rish imkoniyati mavjud. API ham faol.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 10. Katta oqimda barqaror ishlaydimi?</div>
-        <div class="faq-answer">Parallel batch stream orqali ishlaydi va 1.2M+ tranzaksiyani qayta ishlay oladi.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 11. Tizim offline rejimda ishlay oladimi?</div>
-        <div class="faq-answer">API server faol bo‘lsa ishlaydi. Offline modeli alohida paket sifatida chiqish rejalashtirilgan.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 12. Qanday texnologiyalar ishlatilmoqda?</div>
-        <div class="faq-answer">Python, Flask, Sklearn, Joblib, Pandas, HTML/CSS, JS. Keyingi bosqichda Docker + Cloud deploy.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 13. AI qismi faqat fraud uchunmi?</div>
-        <div class="faq-answer">Hozir ha, lekin kelajakda AML (Money Laundering), risk scoring, transaction behavior profiling qo‘shiladi.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 14. Sizning jamoangizning ustunligi nima?</div>
-        <div class="faq-answer">Tajribali ML, Cybersecurity va Backend mutaxassislardan tashkil topgan. Real loyihalar bilan shug‘ullangan.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFAQ(this)">
-        <div class="faq-question">📌 15. Loyihaning kelajak rejalari qanday?</div>
-        <div class="faq-answer">Deep learning modeli, Graph Fraud Detection, mobil ilova, banklar bilan pilot integratsiya.</div>
-    </div>
-
-    <div class="back-btn">
-        <a href="index.html">⬅ Bosh sahifaga qaytish</a>
-    </div>
-
-</div>
 </body>
 </html>
