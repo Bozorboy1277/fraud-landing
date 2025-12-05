@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | Fraud Detection System</title>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+    body{
+        background:#0b1220;
+        color:white;
+        font-family: "Segoe UI", sans-serif;
+        margin:0;
+        padding:0;
+    }
+
+    .container{
+        width:85%;
+        margin:auto;
+        padding:60px 0;
+    }
+
+    h1{
+        text-align:center;
+        font-size:40px;
+        color:#00e0ff;
+        margin-bottom:40px;
+    }
+
+    .faq-item{
+        background:#101b2e;
+        border:1px solid #162542;
+        border-radius:10px;
+        padding:18px 22px;
+        margin-bottom:14px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .faq-item:hover{
+        background:#142645;
+        transform:scale(1.01);
+    }
+
+    .faq-question{
+        font-size:19px;
+        font-weight:bold;
+    }
+
+    .faq-answer{
+        display:none;
+        font-size:15px;
+        color:#bbd6f7;
+        margin-top:10px;
+        line-height:1.6;
+    }
+
+    .faq-item.open .faq-answer{ display:block; }
+
+    .back-btn{
+        text-align:center;
+        margin-top:40px;
+    }
+    .back-btn a{
+        background:#00e0ff;
+        color:#000;
+        font-weight:bold;
+        text-decoration:none;
+        border-radius:8px;
+        padding:12px 25px;
+        transition:.3s;
+    }
+    .back-btn a:hover{ background:#00c0dd; }
+
+</style>
+
+<script>
+    function toggleFAQ(el){
+        el.classList.toggle("open");
+    }
+</script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>FAQ – Eng ko‘p beriladigan savollar</h1>
+
+    <!-- === 15 FAQ ITEM === -->
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 1. Tizim qaysi muammoni hal qiladi?</div>
+        <div class="faq-answer">Banklarda firibgarlik tranzaksiyalarini aniqlash ko‘pincha kechikadi. Bizning AI tizimimiz esa bu jarayonni real vaqtda bajaradi.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 2. Model firibgarlikni qanday aniqlaydi?</div>
+        <div class="faq-answer">Random Forest ML modeli tranzaksiya summasi, balanslar, vaqt, tranzaksiya yo‘nalishi va boshqa xususiyatlar asosida ehtimolni hisoblaydi.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 3. Real bank tizimlariga ulanish mumkinmi?</div>
+        <div class="faq-answer">Ha. REST API orqali backendga ulanish imkoniyati bor. JSON request/response formatida ishlaydi.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 4. Baholash tezligi qancha?</div>
+        <div class="faq-answer">O‘rtacha 10–30 ms ichida natija qaytadi. Katta oqimlar uchun optimizatsiya mavjud.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 5. Modelni qayta o‘qitish mumkinmi?</div>
+        <div class="faq-answer">Ha. Yangi tranzaksiya ma’lumotlari bilan retraining qilib samaradorlikni oshirish mumkin.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 6. Samardorlik qanday?</div>
+        <div class="faq-answer">Hozirgi natija ~98% aniqlik bilan fraudni aniqlaydi. Keyingi bosqichda deep learning qo‘shiladi.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 7. API xavfsizligi qanday ta’minlanadi?</div>
+        <div class="faq-answer">HTTPS orqali uzatiladi, autentifikatsiya qo‘shish mumkin, token asosida kirish qo‘llab-quvvatlanadi.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 8. Loyihani kengaytirish mumkinmi?</div>
+        <div class="faq-answer">Ha, modulli arxitekturaga ega. Qo‘shimcha ML modeli, dashboard yoki monitoring tizimi qo‘shilishi mumkin.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 9. Demo versiya mavjudmi?</div>
+        <div class="faq-answer">Veb interfeys orqali sinab ko‘rish imkoniyati mavjud. API ham faol.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 10. Katta oqimda barqaror ishlaydimi?</div>
+        <div class="faq-answer">Parallel batch stream orqali ishlaydi va 1.2M+ tranzaksiyani qayta ishlay oladi.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 11. Tizim offline rejimda ishlay oladimi?</div>
+        <div class="faq-answer">API server faol bo‘lsa ishlaydi. Offline modeli alohida paket sifatida chiqish rejalashtirilgan.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 12. Qanday texnologiyalar ishlatilmoqda?</div>
+        <div class="faq-answer">Python, Flask, Sklearn, Joblib, Pandas, HTML/CSS, JS. Keyingi bosqichda Docker + Cloud deploy.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 13. AI qismi faqat fraud uchunmi?</div>
+        <div class="faq-answer">Hozir ha, lekin kelajakda AML (Money Laundering), risk scoring, transaction behavior profiling qo‘shiladi.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 14. Sizning jamoangizning ustunligi nima?</div>
+        <div class="faq-answer">Tajribali ML, Cybersecurity va Backend mutaxassislardan tashkil topgan. Real loyihalar bilan shug‘ullangan.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">📌 15. Loyihaning kelajak rejalari qanday?</div>
+        <div class="faq-answer">Deep learning modeli, Graph Fraud Detection, mobil ilova, banklar bilan pilot integratsiya.</div>
+    </div>
+
+    <div class="back-btn">
+        <a href="index.html">⬅ Bosh sahifaga qaytish</a>
+    </div>
+
+</div>
+</body>
+</html>
