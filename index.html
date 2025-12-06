@@ -1,389 +1,298 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fraud Shield AI — Bank fraud tranzaksiyalarini erta aniqlash</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muammo va yechim — Fraud Detection AI</title>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        body{
+            margin:0;
+            padding:0;
+            background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+            color:#e5e7eb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height:1.6;
+        }
+        a{text-decoration:none;color:inherit;}
+
+        /* Navbar */
+        .navbar{
+            position:sticky;
+            top:0;
+            z-index:10;
+            background:rgba(15,23,42,0.95);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid #1f2937;
+        }
+        .nav-inner{
+            max-width:1080px;
+            margin:0 auto;
+            padding:12px 18px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+        .brand{
+            font-weight:700;
+            letter-spacing:0.04em;
+            font-size:16px;
+            color:#60a5fa;
+        }
+        .brand span{
+            color:#f97316;
+        }
+        .nav-links{
+            display:flex;
+            gap:14px;
+            font-size:14px;
+            flex-wrap:wrap;
+        }
+        .nav-links a{
+            padding:6px 12px;
+            border-radius:999px;
+            border:1px solid transparent;
+            color:#9ca3af;
+        }
+        .nav-links a:hover{
+            border-color:#1d4ed8;
+            color:#e5e7eb;
+            background:rgba(37,99,235,0.08);
+        }
+        .nav-links a.active{
+            background:linear-gradient(135deg,#1d4ed8,#22c55e);
+            color:#f9fafb;
+            border-color:transparent;
+            font-weight:600;
+        }
+
+        /* Header */
+        header{
+            max-width:1080px;
+            margin:28px auto 0 auto;
+            padding:10px 18px 0 18px;
+        }
+        header h1{
+            margin:0;
+            font-size:30px;
+            color:#f9fafb;
+        }
+        header p{
+            margin:6px 0 0 0;
+            color:#9ca3af;
+            font-size:14px;
+        }
+        .tagline{
+            margin-top:8px;
+            font-size:13px;
+            color:#6b7280;
+        }
+
+        /* Main content */
+        main{
+            max-width:1080px;
+            margin:18px auto 40px auto;
+            padding:0 18px 40px 18px;
+        }
+        .card{
+            background:rgba(15,23,42,0.98);
+            border-radius:14px;
+            padding:22px 20px 26px 20px;
+            border:1px solid #1f2937;
+            box-shadow:0 24px 60px rgba(0,0,0,0.55);
+        }
+        h2{
+            margin-top:0;
+            font-size:24px;
+            color:#60a5fa;
+        }
+        h3{
+            margin-bottom:6px;
+            margin-top:20px;
+            font-size:18px;
+            color:#93c5fd;
+        }
+        p{
+            font-size:15px;
+            margin:8px 0;
+        }
+        ul{
+            margin:8px 0 8px 20px;
+            padding:0;
+            font-size:14px;
+        }
+        li{
+            margin-bottom:4px;
+        }
+        b{
+            color:#f9fafb;
+        }
+        .chip{
+            display:inline-block;
+            font-size:12px;
+            padding:3px 10px;
+            border-radius:999px;
+            border:1px solid #1f2937;
+            background:rgba(15,23,42,0.9);
+            color:#9ca3af;
+            margin-right:6px;
+            margin-top:4px;
+        }
+
+        footer{
+            text-align:center;
+            padding:16px;
+            font-size:12px;
+            color:#6b7280;
+            border-top:1px solid #020617;
+            background:#020617;
+        }
+
+        @media (max-width:700px){
+            .nav-inner{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:8px;
+            }
+            header h1{
+                font-size:24px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container nav-inner">
-      <div class="logo">
-        <span class="logo-mark">FS</span>
-        <span class="logo-text">Fraud Shield AI</span>
-      </div>
 
-      <nav class="nav-links">
-        <a href="#muammo">Muammo & yechim</a>
-        <a href="#nega-biz">Nega aynan biz?</a>
-        <a href="#texnik">Texnik yechim</a>
-        <a href="#jamoa">Jamoa</a>
-        <a href="#roadmap">Yo‘l xaritasi</a>
-        <a href="#faq">FAQ</a>
-        <a href="#demo" class="btn btn-nav">Demo / API</a>
-      </nav>
-
-      <!-- Mobile burger -->
-      <button class="burger" id="burger-btn" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <div class="brand">
+            FRAUD<span>SHIELD</span> AI
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Muammo & yechim</a>
+            <a href="team.html">Jamoa</a>
+            <a href="why-us.html">Nega aynan biz?</a>
+            <a href="roadmap.html">Yo‘l xaritasi</a>
+            <a href="tech.html">Texnik yechim</a>
+            <a href="demo.html">Demo / API</a>
+            <a href="faq.html">FAQ</a>
+        </div>
     </div>
+</nav>
 
-    <!-- Mobile menu -->
-    <nav class="nav-mobile" id="mobile-menu">
-      <a href="#muammo">Muammo & yechim</a>
-      <a href="#nega-biz">Nega aynan biz?</a>
-      <a href="#texnik">Texnik yechim</a>
-      <a href="#jamoa">Jamoa</a>
-      <a href="#roadmap">Yo‘l xaritasi</a>
-      <a href="#faq">FAQ</a>
-      <a href="#demo" class="btn btn-nav">Demo / API</a>
-    </nav>
-  </header>
+<!-- HEADER -->
+<header>
+    <h1>Bank fraud tranzaksiyalarini erta aniqlash</h1>
+    <p>Soha: FinTech & Axborot xavfsizligi &nbsp; | &nbsp; Yo‘nalish: Moliyaviy firibgarlikni kamaytirish</p>
+    <div class="tagline">
+        1-bo‘lim — muammo va biz taklif qilayotgan IT-yechimni aniq ifodalash.
+    </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-left">
-        <div class="badge">FinTech & Axborot xavfsizligi • Fraud Detection</div>
-        <h1>Bank fraud tranzaksiyalarini <span class="accent">real vaqt</span>da aniqlaydigan AI tizim</h1>
-        <p class="hero-sub">
-          Fraud Shield AI — bank tranzaksiyalarini soniyalar ichida tahlil qilib,
-          firibgarlik ehtimolini baholaydigan AI asosidagi tizim. Mijoz mablag‘ini
-          himoya qiladi va bank risklarini kamaytiradi.
+<!-- MAIN CONTENT -->
+<main>
+    <div class="card" id="index-solution">
+        <h2>1. Muammo va yechim</h2>
+
+        <h3>Muammo</h3>
+        <p>
+            O‘zbekistonda raqamli to‘lovlar, mobil banking va onlayn kartadan foydalanish hajmi
+            yildan-yilga keskin oshmoqda. Har kuni millionlab tranzaksiyalar amalga oshiriladi va
+            <b>firibgarlik operatsiyalarini qo‘lda yoki faqat oddiy qoidalar yordamida nazorat qilish
+            amalda imkonsiz</b> bo‘lib bormoqda.
         </p>
 
-        <div class="hero-actions">
-          <a href="#demo" class="btn btn-primary">Demo / API ga o‘tish</a>
-          <a href="#texnik" class="btn btn-secondary">Texnik yechimni ko‘rish</a>
-        </div>
-
-        <div class="hero-meta">
-          <div>
-            <span class="meta-label">Soha:</span>
-            <span>FinTech & Axborot xavfsizligi</span>
-          </div>
-          <div>
-            <span class="meta-label">Yo‘nalish:</span>
-            <span>Moliyaviy firibgarlikni kamaytirish</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-right">
-        <div class="hero-card main">
-          <div class="hero-card-header">
-            <span>Real-time Monitoring</span>
-            <span class="pill">AI model</span>
-          </div>
-          <div class="hero-card-body">
-            <div class="risk-row">
-              <span>Tranzaksiya xavf darajasi</span>
-              <span class="risk-score">0.87</span>
-            </div>
-            <div class="progress">
-              <div class="progress-fill"></div>
-            </div>
-            <p class="risk-note">Shubhali operatsiya: noodatiy vaqtda yuqori miqdorli yechim.</p>
-          </div>
-        </div>
-
-        <div class="hero-grid">
-          <div class="hero-mini-card">
-            <span class="mini-label">Kundalik tranzaksiyalar</span>
-            <span class="mini-value">+1M</span>
-            <span class="mini-caption">real vaqt tahlili</span>
-          </div>
-          <div class="hero-mini-card">
-            <span class="mini-label">Fraud kamayishi</span>
-            <span class="mini-value">30–45%</span>
-            <span class="mini-caption">modelni to‘liq joriy etganda</span>
-          </div>
-          <div class="hero-mini-card">
-            <span class="mini-label">Javob vaqti</span>
-            <span class="mini-value">&lt; 200ms</span>
-            <span class="mini-caption">API chaqiruvi</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MUAMMO & YECHIM -->
-  <section id="muammo" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>1. Muammo va yechim</h2>
-        <p>Raqamli to‘lovlar hajmi oshgan sari fraud monitoringni qo‘lda yuritish imkonsiz bo‘lib bormoqda.</p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Muammo</h3>
-          <ul class="list">
-            <li>Har kuni millionlab tranzaksiyalar amalga oshadi — hammasini qo‘lda tekshirish imkonsiz.</li>
-            <li>Fraud sxemalar tobora murakkablashmoqda: bo‘lib-bo‘lib yechish, noodatiy hudud va qurilmalar, tungi operatsiyalar.</li>
-            <li>Klassik monitoring kechikkan, qo‘lda va faqat statik qoidalar bilan chegaralangan.</li>
-            <li>Mijozlar mablag‘idan ayriladi, bank uchun moliyaviy va reputatsion risklar oshadi.</li>
-          </ul>
-        </div>
-        <div class="card accent-card">
-          <h3>Yechim</h3>
-          <p class="card-lead">
-            AI asosidagi Fraud Detection System, tranzaksiya paytida real vaqt rejimida qaror qabul qiladi.
-          </p>
-          <ul class="list">
-            <li>Machine Learning modeli (masalan, Random Forest) tranzaksiyaning ko‘plab xususiyatlarini baholaydi.</li>
-            <li>Har bir tranzaksiya uchun firibgarlik ehtimoli hisoblanadi.</li>
-            <li>Shubhali operatsiyalar avtomatik flag qilinib, kartani vaqtinchalik bloklash va qo‘shimcha verifikatsiya ishga tushiriladi.</li>
-            <li>Fraud bo‘yicha qo‘lda tekshiruvlar soni kamayadi, xodimlar vaqti tejaladi.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEGA AYNAN BIZ? -->
-  <section id="nega-biz" class="section section-muted">
-    <div class="container">
-      <div class="section-header">
-        <h2>Nega aynan Fraud Shield AI?</h2>
-        <p>Bank infratuzilmasiga moslashadigan, real API va amaliy tajribaga ega yechim.</p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card small-card">
-          <h3>Real ma’lumotlar bilan sinov</h3>
-          <p>Model tarixiy tranzaksiya loglari asosida o‘qitilib, haqiqiy fraud ssenariylar ustida sinovdan o‘tkaziladi.</p>
-        </div>
-        <div class="card small-card">
-          <h3>API orqali integratsiya</h3>
-          <p>REST API yordamida core banking, mobil ilova va kartalar tizimi bilan tez ulanish imkoniyati.</p>
-        </div>
-        <div class="card small-card">
-          <h3>Customize qilinadigan qoidalar</h3>
-          <p>Har bir bank uchun maxsus risk threshold, whitelisting va qo‘shimcha biznes qoidalarni sozlash mumkin.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEXNIK YECHIM -->
-  <section id="texnik" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Texnik yechim</h2>
-        <p>Tizim arxitekturasi, model va integratsiya bosqichlari.</p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Arxitektura</h3>
-          <ul class="list">
-            <li>Real-time scoring uchun alohida fraud detection servisi.</li>
-            <li>Feature engineering: miqdor, vaqt, geolokatsiya, balans o‘zgarishlari, qurilma fingerprint va boshqalar.</li>
-            <li>Model serveri: o‘qitilgan ML modeli (Random Forest / Gradient Boosting va hokazo).</li>
-            <li>Monitoring va loglash: Prometheus / Grafana / ELK stack orqali kuzatuv.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Model imkoniyatlari</h3>
-          <ul class="list">
-            <li>Imbalanced ma’lumotlar bilan ishlash (fraud case’lar kam bo‘lsa ham).</li>
-            <li>Threshold sozlash orqali false positive/false negative balansini bank siyosatiga moslashtirish.</li>
-            <li>Explainability: har bir qaror uchun asosiy feature’lar ulushi (feature importance).</li>
-            <li>Online va offline retraining: modelni ma’lumot yangilanishiga moslab qayta o‘qitish.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- YO'L XARITASI -->
-  <section id="roadmap" class="section section-muted">
-    <div class="container">
-      <div class="section-header">
-        <h2>Yo‘l xaritasi</h2>
-        <p>Pilotdan to to‘liq joriy etishgacha bo‘lgan bosqichlar.</p>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>1-bosqich: Pilot integratsiya</h3>
-            <p>Bir nechta kartalar segmenti yoki bitta mahsulot bo‘yicha pilot loyihani ishga tushirish.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>2-bosqich: Modelni kalibrlash</h3>
-            <p>Bankning real ma’lumotlari asosida threshold va qoidalarni moslashtirish, xodimlar feedbackiga asoslangan tuning.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>3-bosqich: Full-scale joriy etish</h3>
-            <p>Barcha tranzaksiya kanallari (mobil, web, POS, ATM) bo‘yicha fraud scoringni ishga tushirish.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- JAMOA -->
-  <section id="jamoa" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Jamoa</h2>
-        <p>Data Science, axborot xavfsizligi va banking tajribasiga ega mutaxassislar.</p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card team-card">
-          <div class="avatar">J</div>
-          <h3>Lead Data Scientist</h3>
-          <p>Fraud detection bo‘yicha ML modellari, feature engineering va model monitoring.</p>
-        </div>
-        <div class="card team-card">
-          <div class="avatar">S</div>
-          <h3>Security Engineer</h3>
-          <p>Bank tizimlari bilan xavfsiz integratsiya, audit va log analitika.</p>
-        </div>
-        <div class="card team-card">
-          <div class="avatar">B</div>
-          <h3>Backend / API Engineer</h3>
-          <p>Yuqori yuklamali API, real-time processing va monitoring servislarini qurish.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section section-muted">
-    <div class="container">
-      <div class="section-header">
-        <h2>FAQ</h2>
-        <p>Ko‘p beriladigan savollarga qisqa javoblar.</p>
-      </div>
-
-      <div class="faq-list">
-        <details class="faq-item" open>
-          <summary>Modelni bizning bank infratuzilmamizga integratsiya qilish qancha vaqt oladi?</summary>
-          <p>Odatda pilot integratsiya 2–4 hafta ichida yakunlanadi. Bu vaqt davomida API ulanishi, test muhiti va dastlabki threshold sozlanadi.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Model noto‘g‘ri flag qilsa-chi?</summary>
-          <p>Threshold va qo‘shimcha qoidalar moslashtiriladi, analitiklar feedbacki asosida model tuning qilinadi. False positive darajasini biznes talablariga moslab yo‘lga qo‘yamiz.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Ma’lumotlar bizdan tashqariga chiqmaydimi?</summary>
-          <p>Tizim on-premise va yopiq konturda o‘rnatilishi mumkin. Ma’lumotlar bank infratuzilmasidan tashqariga chiqmasdan, lokal serverlarda qayta ishlanadi.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- DEMO / API -->
-  <section id="demo" class="section section-accent">
-    <div class="container demo-inner">
-      <div>
-        <h2>Demo / API ga ulanish</h2>
-        <p>Test ma’lumotlari bilan real vaqt scoringni sinab ko‘ring yoki banking tizimingizga sand-box orqali ulaning.</p>
-        <ul class="list">
-          <li>Sandbox muhiti uchun API kalitlar</li>
-          <li>Swagger / OpenAPI hujjatlar</li>
-          <li>Misol keltirilgan kodlar (Python, Node.js va hokazo)</li>
+        <p>Firibgarlar odatda quyidagi sxemalardan foydalanadilar:</p>
+        <ul>
+            <li>kartadan juda katta miqdorda pul yechish yoki boshqa hisob raqamga o‘tkazish;</li>
+            <li>1–2 daqiqa ichida ketma-ket kichik summalarda ko‘p tranzaksiya qilish (bo‘lib-bo‘lib yechish);</li>
+            <li>mijoz telefoniga kelgan SMS-kod yoki tasdiqlash ma’lumotlarini aldov yo‘li bilan olish;</li>
+            <li>tungi vaqtda, noodatiy hudud yoki noodatiy qurilmadan operatsiya bajarish.</li>
         </ul>
-      </div>
 
-      <!-- Bu yerda o'zingdagi backend/API endpoint’iga form / link ulab qo‘yasan -->
-      <form class="card demo-form">
-        <h3>Demo so‘rash</h3>
-        <label>
-          <span>Ism-familya</span>
-          <input type="text" placeholder="Ismingiz" required />
-        </label>
-        <label>
-          <span>Bank / Tashkilot nomi</span>
-          <input type="text" placeholder="Tashkilot nomi" required />
-        </label>
-        <label>
-          <span>Kontakt email</span>
-          <input type="email" placeholder="email@example.com" required />
-        </label>
-        <button type="submit" class="btn btn-primary btn-full">So‘rov yuborish</button>
-        <p class="form-note">Formani backend’ingga ulash uchun endpoint’ni bu yerga qo‘shasan.</p>
-      </form>
+        <p>
+            Natijada:
+        </p>
+        <ul>
+            <li>mijozlar o‘z mablag‘idan ayriladi;</li>
+            <li>banklar uchun moliyaviy yo‘qotishlar oshadi;</li>
+            <li>mijoz ishonchi pasayadi va reputatsion xatarlar kuchayadi.</li>
+        </ul>
+
+        <p>
+            Hozirgi amaliyotda ko‘plab banklarda fraud monitoring:
+        </p>
+        <ul>
+            <li>kechikkan (tranzaksiya tugagandan keyin ko‘rib chiqiladi);</li>
+            <li>qo‘lda tekshirish va operator tajribasiga qattiq bog‘langan;</li>
+            <li>faqat statik qoidalar (limitga qarab bloklash va hokazo) bilan chegaralangan.</li>
+        </ul>
+
+        <p>
+            Bu yondashuv <b>yangi, murakkab firibgarlik ssenariylarini</b> aniqlashga har doim ham
+            yetarli emas va real vaqt rejimida qaror qabul qilishni ta’minlamaydi.
+        </p>
+
+        <div style="margin:10px 0 4px 0;font-size:13px;color:#9ca3af;">
+            Biz ko‘zlagan asosiy maqsad:
+        </div>
+        <div class="chip">Firibgarlikni tranzaksiya paytida aniqlash</div>
+        <div class="chip">Mijoz mablag‘ini himoya qilish</div>
+        <div class="chip">Bank risklarini kamaytirish</div>
+
+        <h3>Yechim</h3>
+        <p>
+            Ushbu muammoni hal qilish uchun biz <b>AI asosidagi “Fraud Detection System”</b> ni taklif qilamiz.
+            Tizim bank tranzaksiyalarini <b>real vaqt rejimida</b> tahlil qiladi va har bir operatsiya uchun
+            firibgarlik ehtimolini hisoblaydi. Model tarixiy ma’lumotlar asosida o‘qitilgan bo‘lib,
+            odatiy xarajat odatlarini o‘rganadi va shubhali xatti-harakatlarni avtomatik flag qiladi.
+        </p>
+
+        <p>Tizimning asosiy funksiyalari:</p>
+        <ul>
+            <li>
+                <b>Machine Learning modeli (Random Forest)</b> tranzaksiyaning turli xususiyatlari
+                (miqdor, vaqt, balansdagi o‘zgarishlar va hokazo) asosida xavf darajasini
+                (fraud ehtimolini) baholaydi.
+            </li>
+            <li>
+                <b>Katta miqdordagi yoki noodatiy tranzaksiyalarni avtomatik aniqlash</b> —
+                foydalanuvchining odatiy harajatidan keskin farq qiladigan operatsiyalar flag qilinadi.
+            </li>
+            <li>
+                <b>Qisqa vaqt ichida ketma-ket ko‘p tranzaksiyalarni kuzatish</b> —
+                bo‘lib-bo‘lib yechish va “anti-fraudni aylanib o‘tish” sxemalarini ushlash.
+            </li>
+            <li>
+                Shubhali operatsiya aniqlanganda kartani vaqtinchalik bloklash va
+                <b>ko‘p bosqichli verifikatsiya</b>ni ishga tushirish:
+                SMS-kod, yuzni tekshirish, mijozga qo‘ng‘iroq yoki qo‘shimcha tasdiqlash savollari.
+            </li>
+        </ul>
+
+        <p>
+            Natijada tizim:
+        </p>
+        <ul>
+            <li><b>firibgarlik tranzaksiyalarini erta bosqichda to‘xtatadi</b>;</li>
+            <li>mijoz mablag‘ini real vaqtda himoya qiladi;</li>
+            <li>bankning moliyaviy va reputatsion risklarini kamaytiradi;</li>
+            <li>fraud bo‘yicha qo‘lda tekshiruvlar sonini kamaytirib, xodimlar vaqtini tejaydi.</li>
+        </ul>
+
+        <p>
+            Biz taklif qilayotgan yechim — bu nafaqat nazariy g‘oya, balki
+            <b>amaliy, ishlayotgan AI modeli va real API bilan integratsiya qilinadigan tizim</b>.
+            Keyingi sahifalarda jamoa, texnik yechim, yo‘l xaritasi va demo haqida batafsil ma’lumot beramiz.
+        </p>
     </div>
-  </section>
+</main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <span class="logo-mark small">FS</span>
-        <span>Fraud Shield AI</span>
-      </div>
-      <div class="footer-right">
-        <span>© <span id="year"></span> Fraud Shield AI. Barcha huquqlar himoyalangan.</span>
-      </div>
-    </div>
-  </footer>
+<footer>
+    FraudShield AI — Agrobank xakatoni uchun tayyorlangan taqdimot sayti.
+</footer>
 
-  <script>
-    // Navbar scroll shadow
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        navbar.classList.add('navbar-scrolled');
-      } else {
-        navbar.classList.remove('navbar-scrolled');
-      }
-    });
-
-    // Mobile menu
-    const burgerBtn = document.getElementById('burger-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    burgerBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      burgerBtn.classList.toggle('open');
-    });
-
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        burgerBtn.classList.remove('open');
-      });
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId.length > 1) {
-          e.preventDefault();
-          const el = document.querySelector(targetId);
-          if (el) {
-            window.scrollTo({
-              top: el.offsetTop - 80,
-              behavior: 'smooth',
-            });
-          }
-        }
-      });
-    });
-
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
